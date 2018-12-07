@@ -7,6 +7,23 @@ function setup() {
 	 Ax.on('Get Data', function(data){
 		 document.getElementById("salesNumber").innerHTML =" Number of Real Estates Sales Between "+document.getElementById("minYear").value+"-"+document.getElementById("maxYear").value+": "+data.count+" ("+Math.floor(data.count*1000/data.total)/10+"%)";
 		 console.log(data);
+		 
+		 /**
+			 name : null,
+			 count: 0,
+			 year: (min+x)	
+		 **/
+		 
+		 
+		 var labels =[], dataValues = [];
+		 for(var x = 0; x<data.table.length;x++){
+			 labels.push(data.table[x].name);
+			 dataValues.push(data.table[x].count);
+		 }
+		 chart.config.data.labels = labels;
+		 chart.config.data.datasets[0].data = dataValues;
+		 console.log(chart);
+		 chart.update();
 	 });
 			
 	
