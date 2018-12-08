@@ -6,13 +6,7 @@ function setup() {
 	 //Insert Data from the Server
 	 Ax.on('Get Data', function(data){
 		 document.getElementById("salesNumber").innerHTML =" Number of Real Estates Sales Between "+document.getElementById("minYear").value+"-"+document.getElementById("maxYear").value+": "+data.count+" ("+Math.floor(data.count*1000/data.total)/10+"%)";
-		 console.log(data);
-		 
-		 /**
-			 name : null,
-			 count: 0,
-			 year: (min+x)	
-		 **/
+		 console.log(data); 
 		 
 		 var labels =[], dataValues = [], years=[];
 		 for(var x = 0; x<data.table.length;x++){
@@ -23,7 +17,6 @@ function setup() {
 		 chart.config.data.labels = labels;
 		 chart.config.data.datasets[0].data = dataValues;
 		 chart.config.data.datasets[0].year = years;
-		 console.log(chart);
 		 chart.update();
 	 });
 			
@@ -32,7 +25,7 @@ function setup() {
 	 var ctx = document.getElementById('myChart').getContext('2d');
 	 var chart = new Chart(ctx, {
 		 // The type of chart we want to create
-		 type: 'line',
+		 type: 'bar',
 		 // The data for our dataset
 		 data: {
 			 labels: [],
@@ -74,7 +67,20 @@ function setup() {
 		 console.log(data);
 		 Ax.emit('Get Data',data);
 	 });
+	 
+	 //Line Buttons
+	 document.getElementById("lineButton").addEventListener("click", function(){
+		 console.log("Line Clicked");
+		 chart.type = 'line';
+		 chart.update();
+	 });
 	
+	 //Bar Buttons
+	 document.getElementById("barButton").addEventListener("click", function(){
+		 console.log("Bar Clicked");
+		 chart.type = 'bar';
+		 chart.update();
+	 });
 		
 }
 window.onload = setup;	

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 	 <!-- Head -->
 	 <head>
 		 <title>Axios</title>
@@ -9,6 +8,7 @@
 		 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 		 <script type="text/javascript" src="data.js"></script>
 		 <link rel="stylesheet" type="text/css" href="../Main.css" />
+		 <link rel="stylesheet" type="text/css" href="axios.css" />
 		 <!-- Bootstrap -->
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,10 +19,7 @@
 	 <!-- Body -->
 	 <body>
 		 <!-- Header -->
-		 <header>
-			 <h1>Welcome to the Multi-player Networking Arcade!!!</h1>
-		 </header>
-
+		 <header>J.A.Y.'s Multi-player Networking Arcade!!!</header>
 		 <!-- NAV -->
 		 <nav class="navbar navbar-inverse navbar-static-top"> 
 			 <div class="container-fluid">
@@ -47,28 +44,43 @@
 				 </div>
 			 </div>
 		 </nav>
-
-		 <article>
-			 <h1 align= "center"><U>Axios:</U></h1>
-			 <h4 id="salesNumber"> Number of Real Estates Sales Between 2011-2014: </h4>
-			 <canvas id="myChart"></canvas>
-			 <div align="center">
-				 <p>
-					 Min. Year:
-					 <input id="minYear" type="number" name="points" min="2011" max="2014" step="1" value="2011">
-					 <span></span>
-					 Max Year:
-					 <input id="maxYear" type="number" name="points" min="2011" max="2014" step="1" value="2014">
-					 <span></span>
-					 <button  id="clickMe">print</button>
-				 </p>
-			 </div>
-			 <br>
+		 <!-- Title -->
+		 <h1 align= "center"><U>Axios:</U></h1>
+		 <div id = "dataCenter" class="center" style="width: 95%; height: 80%;">
+			 <div id="topSection">
 			 
-		 </article>	
-
-		 <!-- Creating a footer note -->
-		 <footer>created by Jason A. Young</footer>
-	 </body>
-
+				 <h5 id="salesNumber" align="center" style = "font-size: 3vw"> Number of Real Estates Sales Between 2001-2017: </h5>
+			 </div>
+			 <div class="midSection"> 
+				 <aside class = "leftSection" align="left">
+					 <p id="sectionTitle">Graph Options:</p>
+					 <div id="graphTypes">
+						 <p>Graph Types:</p>
+						 <div id = "types">
+							 <button  id="lineButton" style="color: blue;">Line</button> <button  id="barButton" style="color: red;">Bar</button>
+						 </div>
+					 </div>
+					 
+				 </aside>
+				 <section class = "rightSection" align="right">
+					 <canvas id="myChart" style = "height: 100%"></canvas>
+						
+					 <div class = "bottomSection" align= "center">
+						 <p>
+							 Min. Year:
+							 <input id="minYear" type="number" name="points" min="2001" max="2017" step="1" value="2001" style="color: black;">
+							 <span></span>
+							 Max Year:
+							 <input id="maxYear" type="number" name="points" min="2001" max="2017" step="1" value="2017" style="color: black;">
+							 <span></span>
+							 <button  id="clickMe" style="color: black;">print</button>
+						 </p>
+					 </div>
+				 </section>
+			 </div>	 
+		 </div>	
+		 <br>		 
+	 </body>	 
+	 <!-- Creating a footer note -->
+	 <footer>created by Jason A. Young</footer>
 </html>
