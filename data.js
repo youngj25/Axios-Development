@@ -14,14 +14,15 @@ function setup() {
 			 year: (min+x)	
 		 **/
 		 
-		 
-		 var labels =[], dataValues = [];
+		 var labels =[], dataValues = [], years=[];
 		 for(var x = 0; x<data.table.length;x++){
 			 labels.push(data.table[x].name);
 			 dataValues.push(data.table[x].count);
+			 years.push(data.table[x].year)
 		 }
 		 chart.config.data.labels = labels;
 		 chart.config.data.datasets[0].data = dataValues;
+		 chart.config.data.datasets[0].year = years;
 		 console.log(chart);
 		 chart.update();
 	 });
@@ -34,19 +35,35 @@ function setup() {
 		 type: 'line',
 		 // The data for our dataset
 		 data: {
-			 labels: ["January", "February", "March", "April", "May", "June", "July"],
+			 labels: [],
 			 datasets: [{
-				 label: "My First dataset",
-				 backgroundColor: 'rgb(255, 99, 132)',
-				 borderColor: 'rgb(255, 99, 132)',
-				 data: [0, 10, 5, 2, 20, 30, 45],
+				 label: "Monthly Sales:",
+				 backgroundColor: 'rgb(132, 99, 255)',
+				 borderColor: 'rgb(33, 33, 99)',
+				 data: [],
 			 }]
 		 },
 
 		 // Configuration options go here
-		 options: {}
+		 options: {
+			 tooltips: {
+				 mode: 'index',
+				 callbacks: {
+					 // Use the footer callback to display the sum of the items showing in the tooltip
+					 footer: function(tooltipItems, data) {
+						var year = 0;
+
+						 tooltipItems.forEach(function(tooltipItem) {
+							 year = data.datasets[tooltipItem.datasetIndex].year[tooltipItem.index];
+						 });
+						 return 'Year: ' + year;
+					 }
+				 },
+			 }
+		 }
 	 });
 	 console.log(chart);
+	
 	 //Buttons
 	 document.getElementById("clickMe").addEventListener("click", function(){
 		 console.log("Sent");
